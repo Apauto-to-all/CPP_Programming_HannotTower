@@ -48,7 +48,7 @@ protected: //菜单
     int choose_tc = 0; //退出
     int tc_sf = 1; //选中退出的“是”与“否”
     int cd_out = 0; // 是否退出菜单
-    string sf_se = "on"; 
+    string sf_se = "on";
 
 protected://音效大全
     //音效，上下移动
@@ -607,7 +607,7 @@ private: //菜单
             if (choose_tc == 1 && cd_xz == 1) exit(0); //退出选项
             else {
                 choose_tc = 0;
-                cd_xz == 1;
+                cd_xz = 1;
             }
         }
     }
@@ -683,7 +683,7 @@ private: //菜单
             else cout << "\033[17;H\033[2K\t\t\t登入账户\033[0m";
             cout << "\033[20;H\033[2K\t\t\t注销账户\033[0m";
             if (cd_xz == 1) {
-                cout << "\033[8;H\033[1;34m\033[2K\t\t->\t开关音效："<<sf_se<<"\033[0m";
+                cout << "\033[8;H\033[1;34m\033[2K\t\t->\t开关音效：" << sf_se << "\033[0m";
             }
             else if (cd_xz == 2) {
                 cout << "\033[11;H\033[1;34m\033[2K\t\t->\t查看个人战绩\033[0m";
@@ -751,7 +751,7 @@ private: //菜单
                 cout << "\t\t\t开关音效：" << sf_se << "\n\n" << endl;
                 cout << "\t\t\t查看个人战绩\n\n" << endl;
                 cout << "\t\t\t“征服之路”排行榜\n\n" << endl;
-                if(sf_dr == 1) cout << "\t\t\t退出登入\n\n" << endl;
+                if (sf_dr == 1) cout << "\t\t\t退出登入\n\n" << endl;
                 else cout << "\t\t\t登入账户\n\n" << endl;
                 cout << "\t\t\t注销账户\n" << endl;
             }
@@ -895,8 +895,8 @@ private:
     int txt = 1; //是否显示说明，0为不显示，1为显示，可由t控制
     int xzk = 0; //准备需要移动的塔，0为不选择，1~3为选择最上面的它，并移动到最上面
     int jt = 1; //箭头位置，范围1~3
-    
-//游戏主体
+
+    //游戏主体
 private:  //用户无需知道的函数
     //向右移动
     void r_move() {
@@ -1031,7 +1031,7 @@ private:  //用户无需知道的函数
             txt = 1;
             xzk = 0;
             jt = 1;
-            kb = 0;            
+            kb = 0;
             game_xs();
         }
         else {
@@ -1075,7 +1075,7 @@ private:  //用户无需知道的函数
             jtt();
         }
         // 将光标移动到第 4 行开头，拿取塔所在的行，清除内容
-        cout << "\033[4;H" << "\033[2K"; 
+        cout << "\033[4;H" << "\033[2K";
         if (xzk != 0) {
             if (xzk == 1) cout << hu[kb];
             if (xzk == 2) cout << "\033[4;42H" << hu[kb];
@@ -1094,7 +1094,7 @@ private:  //用户无需知道的函数
     inline void game_xs() {
         system("cls");
         game_show();
-    }    
+    }
     void onKeyDown(unsigned short key) {
         switch (key) {
         case VK_UP:
@@ -1280,7 +1280,7 @@ private:  //用户无需知道的函数
         if (a[2][xz - 1] == 1) {
             se_win();
             double score = 0.0;
-            int pp = (pow(2, xz) - 1);
+            double pp = (pow(2, xz) - 1);
             score += 0.5 * (100 - (count - pp) * (50 / pp));
             score += 0.5 * (100 - (times - pp) * (40 / pp));
             if (cg == 1) cg_df += score * (xz + 2) * 0.1;
@@ -1368,7 +1368,7 @@ public:
                 if (cin.fail()) {                // 如果输入失败
                     cout << "输入有误，请重新输入" << endl;
                     cin.clear();                 // 清空错误状态
-                    cin.ignore(1024, '\n');  // 忽略缓冲区中的所有字符，直到遇到换行符
+                    cin.ignore(1024， '\n');  // 忽略缓冲区中的所有字符，直到遇到换行符
                     continue;
                 }
                 if (xz >= 1 && xz <= 8) {
@@ -1382,14 +1382,14 @@ public:
                 }
                 cout << "\033[?25l";
             }
-            cin.ignore(1024, '\n');
+            cin.ignore(1024， '\n');
         }
         string h1 = "[", h2 = "]";
         int xz1 = xz;
         h[0] = hu[0] = "";
         for (int i = 1; i < 9; i++) {
             string hh(2 * i, ' ');
-            string kon((n2 - 2 * i - 1), ' ');
+            string kon((n2 - 2 * i - 1)， ' ');
             h[i] = kon + h1 + hh + "|" + hh + h2 + kon;
             hu[i] = kon + h1 + hh + " " + hh + h2 + kon;
         }
