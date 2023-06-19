@@ -48,7 +48,7 @@ protected: //菜单
     int choose_tc = 0; //退出
     int tc_sf = 1; //选中退出的“是”与“否”
     int cd_out = 0; // 是否退出菜单
-    string sf_se = "on";
+    string sf_se = "on"; 
 
 protected://音效大全
     //音效，上下移动
@@ -622,7 +622,7 @@ private: //菜单
             string scdh = generateRandomString(), sc = "";
             cout << "\n\t\t删除代号：" << scdh << endl;
             cout << "\n\t\t如果你不想注销，输入“b”退出" << endl;
-            cout << "\n\t\t如果你确定删除该账户，请输入删除代号（如果你不想注销，输入“b”退出）：";
+            cout << "\n\t\t如果你确定删除该账户，请输入删除代号：";
             getline(cin, sc);
             while (sc != scdh) {
                 if (sc == "b") return;
@@ -651,7 +651,7 @@ private: //菜单
             cout << "\033[?25l";
         }
         else {
-            cout << "\n老兄，你还没登入账户，怎么注销？" << endl;
+            cout << "\n未登入账户，无法注销\n" << endl;
             system("pause");
         }
     }
@@ -683,7 +683,7 @@ private: //菜单
             else cout << "\033[17;H\033[2K\t\t\t登入账户\033[0m";
             cout << "\033[20;H\033[2K\t\t\t注销账户\033[0m";
             if (cd_xz == 1) {
-                cout << "\033[8;H\033[1;34m\033[2K\t\t->\t开关音效：" << sf_se << "\033[0m";
+                cout << "\033[8;H\033[1;34m\033[2K\t\t->\t开关音效："<<sf_se<<"\033[0m";
             }
             else if (cd_xz == 2) {
                 cout << "\033[11;H\033[1;34m\033[2K\t\t->\t查看个人战绩\033[0m";
@@ -751,7 +751,7 @@ private: //菜单
                 cout << "\t\t\t开关音效：" << sf_se << "\n\n" << endl;
                 cout << "\t\t\t查看个人战绩\n\n" << endl;
                 cout << "\t\t\t“征服之路”排行榜\n\n" << endl;
-                if (sf_dr == 1) cout << "\t\t\t退出登入\n\n" << endl;
+                if(sf_dr == 1) cout << "\t\t\t退出登入\n\n" << endl;
                 else cout << "\t\t\t登入账户\n\n" << endl;
                 cout << "\t\t\t注销账户\n" << endl;
             }
@@ -835,7 +835,7 @@ private: //菜单
         for (; k <= 10;) {
             cout << "\n第" << k++ << "名：暂无数据" << endl;
         }
-        if (sf_dr == 1 && dr_pm != 0) cout << "\n\n[1;33m" << username << ",恭喜你！你是：第" << dr_pm << "名\033[0m" << endl;
+        if (sf_dr == 1 && dr_pm != 0) cout << "\n\n\033[1;33m" << username << ",恭喜你！你是：第" << dr_pm << "名\033[0m" << endl;
         cout << endl;
         system("pause");
     }
@@ -895,8 +895,8 @@ private:
     int txt = 1; //是否显示说明，0为不显示，1为显示，可由t控制
     int xzk = 0; //准备需要移动的塔，0为不选择，1~3为选择最上面的它，并移动到最上面
     int jt = 1; //箭头位置，范围1~3
-
-    //游戏主体
+    
+//游戏主体
 private:  //用户无需知道的函数
     //向右移动
     void r_move() {
@@ -1031,7 +1031,7 @@ private:  //用户无需知道的函数
             txt = 1;
             xzk = 0;
             jt = 1;
-            kb = 0;
+            kb = 0;            
             game_xs();
         }
         else {
@@ -1075,7 +1075,7 @@ private:  //用户无需知道的函数
             jtt();
         }
         // 将光标移动到第 4 行开头，拿取塔所在的行，清除内容
-        cout << "\033[4;H" << "\033[2K";
+        cout << "\033[4;H" << "\033[2K"; 
         if (xzk != 0) {
             if (xzk == 1) cout << hu[kb];
             if (xzk == 2) cout << "\033[4;42H" << hu[kb];
@@ -1094,7 +1094,7 @@ private:  //用户无需知道的函数
     inline void game_xs() {
         system("cls");
         game_show();
-    }
+    }    
     void onKeyDown(unsigned short key) {
         switch (key) {
         case VK_UP:
@@ -1280,7 +1280,7 @@ private:  //用户无需知道的函数
         if (a[2][xz - 1] == 1) {
             se_win();
             double score = 0.0;
-            double pp = (pow(2, xz) - 1);
+                double pp = (pow(2, xz) - 1);
             score += 0.5 * (100 - (count - pp) * (50 / pp));
             score += 0.5 * (100 - (times - pp) * (40 / pp));
             if (cg == 1) cg_df += score * (xz + 2) * 0.1;
